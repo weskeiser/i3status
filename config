@@ -15,6 +15,7 @@ general {
 #order += "ethernet _first_"
 #order += "disk /"
 #order += "load"
+order += "tztime left"
 order += "tztime time"
 order += "memory"
 order += "cpu_usage"
@@ -29,21 +30,27 @@ order += "tztime date"
 
 #######
 
+tztime left {
+    format = "| 🕕 %H:%M |"
+    timezone = "Europe/Oslo"
+    separator = false
+    min_width = 1285
+}
 
 tztime time {
-        format = " 🕕 %H:%M "
-        timezone = "Europe/Oslo"
+    format = " 🕕 %H:%M "
+    timezone = "Europe/Oslo"
 }
 
 memory {
-        format = " 🟢 %percentage_free"
+    format = " 🟢 %percentage_free"
 
-        format_degraded = " 🟡 %percentage_free"
-        threshold_degraded = "50%"
-        threshold_critical = "10%"
+    format_degraded = " 🟡 %percentage_free"
+    threshold_degraded = "30%"
+    threshold_critical = "10%"
 
 
-        separator = false
+    separator = false
 }
 
 cpu_usage {
@@ -54,7 +61,7 @@ cpu_usage {
 cpu_temperature 0 {
     format = "🌡️ %degrees°C "
     max_threshold = 75
-    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon5/temp1_input"
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon7/temp1_input"
   }
 
 
